@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Maps</title>
+
+
+</head>
+<body>
+    <div id="app">
+
+        <div id="map"></div>
+
+        <div id="interface">
+            <form id="form-maps">
+                <label>
+                    <span>Label :</span>
+                    <input type="text" id="title">
+                </label>
+                <label>
+                    <span>Description :</span>
+                    <input type="text" id="description">
+                </label>
+                <label>
+                    <span>Latitude :</span>
+                    <input type="text" id="latitude">
+                </label>
+                <label>
+                    <span>Longitude :</span>
+                    <input type="text" id="longitude">
+                </label>
+                <fieldset>
+                <label>
+                    <span>Hôtel :</span>
+                    <input type="radio" name="structure" id="hotel" value="hotel">
+                </label>
+                <label>
+                    <span>Restaurant :</span>
+                    <input type="radio" name="structure" id="restaurant" value="restaurant">
+                </label>
+                <label>
+                    <span>Bar :</span>
+                    <input type="radio" name="structure" id="bar" value="bar">
+                </label>
+                </fieldset>
+
+                <input type="submit" value="Ajouter">
+            </form>
+
+            <form id="filter">
+                <label>
+                    <span>Hotel :</span>
+                    <input type="checkbox" id="hotel" value="hotel">
+                </label>
+                <label>
+                    <span>Restaurant :</span>
+                    <input type="checkbox" id="restaurant" value="restaurant">
+                </label>
+                <label>
+                    <span>Bar :</span>
+                    <input type="checkbox" id="bar" value="bar">
+                </label>
+            </form>
+        </div>
+    </div>
+
+
+<script src="main.js"></script>
+
+</body>
+</html>
