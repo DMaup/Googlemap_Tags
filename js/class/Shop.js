@@ -1,35 +1,30 @@
-class Marker {
-    constructor(map, position, title, description, structure){
+class Shop {
+    constructor(map, position, shop, description){
 
-        this.structure = structure;
 
         this.g_marker = null;
         this.g_infowindows = null;
 
-        this.createG_marker(map, position, title);
-        this.createG_infowindow(title, description);
+        this.createG_marker(map, position, shop);
+        this.createG_infowindow(shop, description);
         this.linkMarkerWindow(map);
-
-
     }
 
-    createG_marker(map, position, title){
+    createG_marker(map, position, shop){
         this.g_marker = new google.maps.Marker({
             position: position,
-            title: title,
+            shop: shop,
             map: map
         });
     }
 
-    createG_infowindow(title, description){
-        let content = "<h3>" + this.structure + " " + title + "</h3>";
+    createG_infowindow(shop, description){
+        let content = "<h3>" + shop + "</h3>";
             content += "<p>" + description + "</p>";
 
             this.g_infowindows = new google.maps.InfoWindow({
                 content: content
             });
-
-
     }
 
     linkMarkerWindow(map){
@@ -39,4 +34,4 @@ class Marker {
     }
 }
 
-module.exports = Marker;
+module.exports = Shop;

@@ -1,14 +1,14 @@
-const Marker = require("./Marker");
+const Shop = require("./Shop");
 class App {
     constructor() {
 
         this.$form          = document.getElementById("form-maps");
-        this.$title         = document.getElementById("title");
+        this.$shop          = document.getElementById("shop_label");
         this.$description   = document.getElementById("description");
         this.$latitude      = document.getElementById("latitude");
         this.$longitude     = document.getElementById("longitude");
-        this.$structure     = document.getElementById("structure");
-        this.$filters        = document.querySelectorAll("input[type='checkbox']");
+        /*this.$structure    = document.getElementById("structure");
+        this.$filters       = document.querySelectorAll("input[type='checkbox']");*/
 
         this.position = {
             lat: 0,
@@ -17,11 +17,7 @@ class App {
 
         this.map = null;
         this.appMarker = null;
-        this.markers = {
-                hotel: [],
-                restaurant: [],
-                bar: []
-        };
+        this.shops = [];
     }
 
     initMap(idElement) {
@@ -30,7 +26,7 @@ class App {
                 lat: this.position.lat,
                 lng: this.position.lng
             },
-            zoom: 20
+            zoom: 14
         });
     }
 
@@ -59,7 +55,7 @@ class App {
         this.appMarker = new google.maps.Marker({
             position: this.position,
             map: this.map,
-            title: 'Vous êtes ici !'
+            $shop: 'Vous êtes ici !'
         });
 
 
@@ -68,29 +64,29 @@ class App {
         });
     }
 
-    addMarker() {
+    addShop() {
         const position = {
             lat: parseFloat(this.$latitude.value),
             lng: parseFloat(this.$longitude.value)
         };
 
-        const marker = new Marker(
+
+        const shop = new Shop(
             this.map,
             position,
-            this.$title.value,
-            this.$description.value,
-            this.$form.elements["structure"].value
+            this.$shop.value,
+            this.$description.value
+            //this.$form.elements["structure"].value
         );
 
-        let content = "<h3>Etablissement " + this.$title.value + "</h3>";
+        let content = "<h3>" + this.$shop.value + "</h3>";
         content += "<p>" + this.$description.value + "</p>";
-
 
         const infowindow = new google.maps.InfoWindow({
             content: content
         });
 
-        this.markers[marker.structure].push(marker);
+        //this.shops[shop.structure].push(shop);
         this.clearForm();
     }
 
@@ -98,14 +94,26 @@ class App {
      this.$form.reset();
     }
 
-    filterMarkers(structure, checked){
+   /* filterMarkers(structure, checked){
         const map = checked ? this.map : null;
 
-        for (let marker of this.markers[structure]){
-            marker.g_marker.setMap(map);
+        for (let shop of this.shops[structure]){
+            shop.g_marker.setMap(map);
         }
 
 
+    }*/
+
+    storeShops(){
+        const key = "shops";
+        localStorage.setItem(key,JSON.stringify(this.shops));
     }
+
+   /* registerInLocalStorage(){
+
+        const stringified = JSON.stringify( this.shops );
+        localStorage.setItem( shops , stringified );
+
+    }*/
 }
     module.exports = App;

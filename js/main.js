@@ -23,7 +23,8 @@ GoogleMapsLoader.load(function () {
 
     app.$form.onsubmit = function () {
         event.preventDefault();
-        app.addMarker();
+        app.addShop();
+        app.storeShops();
     }
     
     app.map.addListener("click", function (event) {
@@ -33,14 +34,14 @@ GoogleMapsLoader.load(function () {
 
     });
 
-    for(let $filter of app.$filters){
+  /*  for(let $filter of app.$filters){
         $filter.onclick = function () {
             const structure = $filter.value;
             const checked = $filter.checked;
 
             app.filterMarkers(structure, checked);
         }
-    }
+    }*/
 
 
 
